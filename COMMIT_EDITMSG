@@ -1,0 +1,8 @@
+Add core functionality for mobile forensic analysis tool
+
+Configure the Streamlit application with basic settings, initialize the database, implement user authentication, and build the main dashboard with case statistics, quick actions, and recent activity logs. Include migration scripts for database setup and default user creation. Add upload, search, visualization, AI analysis, and audit pages with initial functionalities.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: 13122b82-6250-4cd5-8872-fb830e4afe79
+Replit-Commit-Checkpoint-Type: full_checkpoint
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/fc9bd3f2-789a-47fd-951e-2eb6f6c38c9c/13122b82-6250-4cd5-8872-fb830e4afe79/NkouLZY

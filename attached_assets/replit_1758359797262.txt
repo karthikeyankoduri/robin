@@ -1,0 +1,138 @@
+You are an expert software engineer and prompt engineer with 10+ years of experience building AI-powered applications, forensic tools, and production-ready prototypes. Your task is to build a Streamlit-based AI forensic analysis tool named "Robin" that helps investigative officers analyze UFDR (Universal Forensic Data Report) data from mobile devices. 
+
+The app must handle uploads of CSV, JSON, XML, and SQLite files, parse and store them in a PostgreSQL or SQLite database, perform AI-powered analysis, and provide visualizations and audit logs.  
+
+Build "Robin" in a structured, maintainable, and scalable way, ready for deployment. Provide all files, folder structure, and code snippets.
+
+---
+
+### 1. Project Requirements:
+
+**Core Features:**
+- Upload and parse UFDR reports (CSV, JSON, XML, SQLite)
+- Full-text search across chats, calls, contacts, and media metadata
+- AI-powered summarization and NER of conversations (names, phones, locations)
+- Timeline visualization of communications
+- Contact relationship graphs/networks
+- Evidence cross-linking and correlation
+- Audit logs and chain-of-custody tracking
+
+**Data Types to Handle:**
+- Chat messages (WhatsApp, SMS, Telegram)
+- Call logs and metadata
+- Contacts and address books
+- Images/videos with EXIF metadata
+- App usage logs and timestamps
+- Location data (GPS coordinates)
+
+---
+
+### 2. Technology Stack:
+
+**Frontend:** Streamlit (multi-page app)  
+**Backend:** Python (FastAPI optional)  
+**Database:** PostgreSQL / SQLite  
+**AI Libraries:** spaCy, Transformers, sentence-transformers, Hugging Face pipelines  
+**Search/Indexing:** Elasticsearch or Whoosh  
+**Visualization:** Plotly, NetworkX, PyVis, Matplotlib, Seaborn  
+**Security:** Python-JOSE, bcrypt, JWT  
+**Deployment:** Docker, environment variables, version control
+
+---
+
+### 3. File Structure:
+
+robin/
+│
+├── app/
+│ ├── Home.py
+│ ├── pages/
+│ │ ├── 1_Upload.py
+│ │ ├── 2_Search.py
+│ │ ├── 3_Visualization.py
+│ │ ├── 4_AI_Analysis.py
+│ │ └── 5_Audit.py
+│ └── utils/
+│ ├── db.py
+│ ├── parsers.py
+│ ├── ai.py
+│ ├── viz.py
+│ └── security.py
+│
+├── backend/
+│ └── main.py
+├── migrations/
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
+
+
+---
+
+### 4. Step-by-Step Instructions for Replit:
+
+1. **Create the project folder structure** as above.  
+2. **Set up Python virtual environment** in Replit (if not automatically done).  
+3. **Install dependencies** using separate `pip install` commands:  
+    ```
+    pip install streamlit
+    pip install fastapi
+    pip install uvicorn[standard]
+    pip install sqlalchemy psycopg2-binary sqlite-utils
+    pip install pandas lxml python-magic pillow exifread
+    pip install transformers torch spacy scikit-learn sentence-transformers
+    pip install elasticsearch whoosh
+    pip install matplotlib seaborn networkx pyvis plotly
+    pip install python-jose[cryptography] passlib[bcrypt] pyjwt cryptography
+    pip install pytest pytest-asyncio
+    pip install docker python-dotenv loguru tqdm
+    python -m spacy download en_core_web_sm
+    ```
+4. **Create database models** in `app/utils/db.py` for Cases, ChatMessages, Calls, Contacts, Media, Locations, and AuditLogs. Include relationships and indexes for fast querying.  
+5. **Implement parsers** in `app/utils/parsers.py` for CSV, JSON, XML, SQLite UFDR files. Make it extensible.  
+6. **Implement AI functions** in `app/utils/ai.py`:  
+    - `summarize_text(text)` using Hugging Face pipeline  
+    - `extract_entities(text)` using spaCy  
+7. **Build multi-page Streamlit frontend** in `app/pages/`:
+    - Upload page (file upload + DB insert)  
+    - Search page (full-text search across messages)  
+    - Visualization page (timelines, network graphs)  
+    - AI Analysis page (summarization, NER)  
+    - Audit page (chain-of-custody logs)  
+8. **Secure the app**: JWT auth, password hashing, role-based access, encrypted file storage.  
+9. **Dockerize the app** with `Dockerfile` and optional `docker-compose.yml` to include PostgreSQL.  
+10. **Testing**: write unit tests for parsers, DB inserts, AI functions, search, and visualizations.  
+11. **Deployment**: Replit + Docker, include environment variables for DB credentials and API keys.
+
+---
+
+### 5. Deliverables Expected:
+
+- Full multi-page Streamlit app "Robin" ready to run in Replit.  
+- Working AI summarization and NER for uploaded UFDR data.  
+- Visualizations: timelines, contact networks, charts.  
+- Secure file uploads and chain-of-custody logging.  
+- Database models for all data types.  
+- Docker-ready for production deployment.  
+- Instructions to run locally:  
+
+
+---
+
+### 6. Special Notes for Replit:
+
+- Make all paths relative (`app/utils/...`)  
+- Store large AI models in Replit’s persistent storage if possible, or load via Hugging Face API.  
+- Use Replit secrets for API keys and DB credentials.  
+
+---
+
+**Task for Replit Agent:**  
+“Generate the full folder structure, all Python files, and starter code for pages, utils, and backend so that a user can immediately upload UFDR files, run AI analysis, and visualize results. Use best practices for maintainability, security, and AI integration.”
+
+---
+
+If you want, I can **also generate a full `copy-paste-ready Replit code package for Robin`**, meaning **all files with starter code filled in**, so you can immediately paste it into Replit and run it.  
+
+Do you want me to do that next?
